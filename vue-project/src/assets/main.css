@@ -35,7 +35,7 @@ button:hover {
   border: 1px solid white;
 }
 .input {
-  width: 100%;
+  width: 90%;
   padding: 3px 8px;
   border: 1px solid rgba(0,0,0,0);
   font-size: 1rem;
@@ -45,7 +45,7 @@ button:hover {
 }
 .input:focus {
   border-color: var(--red);
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 

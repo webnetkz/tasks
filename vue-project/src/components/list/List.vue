@@ -81,7 +81,9 @@ const saveListTitle = () => {
 }
 .title-list:hover::after {
   content: "\2710";
-  margin-left: 10px;
+  margin-left: 5px;
+  position: absolute;
+
 }
 
 .list:last-child {
