@@ -22,11 +22,18 @@ const listCreate = () => {
 </script>
 
 <template>
-    <button @click="listCreate">+ Add new list</button>
+    <img class="create-icon" src="/icons/create.svg" @click="listCreate">
 </template>
 
 <style scoped>
 
+.create-icon {
+  width: 25px;
+}
+.create-icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
 @media (min-width: 1024px) {
 
 }

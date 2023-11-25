@@ -49,8 +49,10 @@ const saveListTitle = () => {
       </span>
     </div>
     <TaskComponent :listId="list.id"/>
-    <CreateTaskComponent :listId="list.id" />
-    <DeleteListComponent :listId="list.id" />
+    <div class="settings-list">
+      <CreateTaskComponent :listId="list.id" />
+      <DeleteListComponent :listId="list.id" />
+    </div>
   </div>
 </template>
 
@@ -70,7 +72,8 @@ const saveListTitle = () => {
   z-index: 10;
   border-radius: var(--border-radius);
   margin-right: 7px;
-  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-top: 40px;
 }
 
 .title-list {
@@ -86,6 +89,20 @@ const saveListTitle = () => {
 
 }
 
+.settings-list {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border-radius: var(--border-radius);
+  background: var(--gray);
+  display: flex;
+  padding: 3px;
+  align-items: center;
+  min-height: 31px;
+}
+.settings-list > * {
+  margin-right: 5px;
+}
 .list:last-child {
   margin-right: 50px;
 }

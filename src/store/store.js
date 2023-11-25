@@ -63,8 +63,11 @@ const store = createStore({
     createTask({ commit }, task) {
       commit('addTask', task);
     },
-    updateTask({ commit }, {id: taskId, title: newTitle}) {
+    updateTitleTask({ commit }, {id: taskId, title: newTitle}) {
       commit('changeTitleTask', {id: taskId, title: newTitle});
+    },
+    updateDescriptionTask({ commit }, {id: taskId, description: newTitle}) {
+      commit('changeDescriptionTask', {id: taskId, description: newTitle});
     },
   },
   getters: {

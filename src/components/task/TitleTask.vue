@@ -1,10 +1,10 @@
 <script setup>
-import { ref, computed, defineProps } from 'vue';
+import { ref, computed, defineProps, inject } from 'vue';
 import { useStore } from 'vuex';
 
 const newTaskTitle = ref('');
-const editingTask = ref(null);
 const store = useStore();
+const editingTask = inject('editingTask');
 const props = defineProps({
   taskId: Number
 });
@@ -26,14 +26,15 @@ const stopEditingTask = () => {
 const saveTaskTitle = () => {
   if (editingTask.value) {
     editingTask.value.title = newTaskTitle.value;
-    store.dispatch('updateTask', {id: editingTask.value.id, title: editingTask.value.title});
+    store.dispatch('updateTitleTask', {id: editingTask.value.id, title: editingTask.value.title});
     stopEditingTask();
   }
 };
+
 </script>
 
 <template>
-    <div v-if="editingTask === task">
+    <div v-if="editingTask === task" class="task-title-container">
         <input 
             v-model="newTaskTitle"
             class="input"

@@ -1,18 +1,22 @@
 <script setup>
-import { ref, computed, defineProps } from 'vue';
+import { ref, computed, defineProps, provide } from 'vue';
 import { useStore } from 'vuex';
 // import draggable from 'vuedraggable';
 
-import TaskTitleComponent from './TaskTitle.vue';
-import TaskStatusComponent from './TaskStatus.vue';
-
+import TitleTaskComponent from './TitleTask.vue';
+import DescriptionTaskComponent from './DescriptionTask.vue';
+import DeteleTaskComponent from './DeleteTask.vue';
 
 const store = useStore();
 const props = defineProps(['listId']);
+const editingTask = ref(null);
+
+provide('editingTask', editingTask);
 
 const filteredTasks = computed(() => {
   return props.listId ? store.state.tasks.filter(task => task.id_list === props.listId) : [];
 });
+
 
 </script>
 
@@ -21,10 +25,10 @@ const filteredTasks = computed(() => {
     <template #item="{ element, index }"> -->
       <!-- <div class="task"> -->
       <div class="task" v-for="task in filteredTasks" :key="task.id">
-        <TaskStatusComponent :taskId="task.id" />
+        <DeteleTaskComponent :taskId="task.id" />
         <div>
-          <TaskTitleComponent :taskId="task.id" @click="hiddenStatus"/>
-          <p class="description-task">{{ task.description }}</p>
+          <TitleTaskComponent :taskId="task.id" @click="hiddenStatus"/>
+          <DescriptionTaskComponent :taskId="task.id" @click="hiddenStatus"/>
         </div>
       </div>
       <!-- </div>
@@ -49,15 +53,13 @@ const filteredTasks = computed(() => {
   cursor: pointer;
   border: 1px solid var(--gray);
 }
+
+.task:has(input) .status-task {
+  display: none;
+}
 .task:hover {
   background: var(--gray);
   border-color: var(--green);
-}
-.description-task {
-  width: 150px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 @media (min-width: 1024px) {

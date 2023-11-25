@@ -14,13 +14,16 @@ const deleteList = () => {
 </script>
 
 <template>
-    <button @click="deleteList">- Delete list</button>
+    <img class="delete-icon" src="/icons/delete.svg" @click="deleteList">
 </template>
 
 <style scoped>
-
-button {
-  margin-bottom: 20px;
+.delete-icon {
+  width: 25px;
+}
+.delete-icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 @media (min-width: 1024px) {

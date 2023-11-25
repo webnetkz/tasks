@@ -23,11 +23,17 @@ const taskCreate = () => {
 </script>
 
 <template>
-    <button @click="taskCreate">+ Create task</button>
+  <img class="create-icon" src="/icons/create.svg" @click="taskCreate">
 </template>
 
 <style scoped>
-
+.create-icon {
+  width: 25px;
+}
+.create-icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
 @media (min-width: 1024px) {
 
 }

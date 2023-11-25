@@ -1,9 +1,11 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, inject } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 const props = defineProps(['taskId']);
+const editingTask = inject('editingTask');
+
 
 const completedTask = () => {  
   store.commit('removeTask', props.taskId);
